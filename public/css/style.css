@@ -1,0 +1,156 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Navbar Styling  */
+
+.navbar {
+    height: 6rem;
+    background-color: white;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+
+/* Footer Styling */
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links, .f-info-socials, .f-brand {
+    width: 100%;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+
+/* Cards */
+
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-body p {
+    font-weight: 400;
+}
+
+.card-links {
+    text-decoration: none;
+}
+
+/* Card Effect */
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+
+/* New Page */
+.add-btn, .edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.btns {
+    display: flex;
+    gap: 25px;
+    margin-left: 25%;
+    margin-bottom: 30px;
+}
+
+.edit-btn,
+.delete-btn {
+    width: 80px;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(254, 66, 77, 0.3);
+}
+
+.edit-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(254, 66, 77, 0.3);
+}
+
+.delete-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(18, 1, 1, 0.217);
+}
+
+
+/* Show page */
+.show-img {
+    height: 30vh;
+}
+
+.btns {
+    display: flex;
+}
+
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.delete-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(10, 0, 0, 0);   
+}
