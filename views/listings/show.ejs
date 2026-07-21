@@ -23,6 +23,7 @@
 
     <br>
 
+    <% if(currUser && currUser._id.equals(listing.owner._id))  { %>
 
     <div class="btns mt-3">
     <a href="/listings/<%= listing._id %>/edit"
@@ -37,6 +38,8 @@
         </button>
     </form>
 </div>
+
+    <% } %>
     </form>
 </div>
 
