@@ -4,14 +4,12 @@ const wrapAsnc = require("../utils/wrapAsnc.js");
 const Listing = require("../models/listing.js");
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 
+const listingController = require("../controllers/listings.js");
+
 // Show All Listings or Index route
 router.get(
   "/",
-  wrapAsnc(async (req, res) => {
-    const allListings = await Listing.find({});
-
-    res.render("listings/index", { allListings });
-  }),
+  wrapAsnc(listingController.index),
 );
 
 // new route or Add new listing
