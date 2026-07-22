@@ -4,7 +4,11 @@ const wrapAsnc = require("../utils/wrapAsnc.js");
 const ExpressError = require("../utils/ExpressError.js");
 const Review = require("../models/review.js");
 const Listing = require("../models/listing.js");
-const { validateReview, isLoggedIn } = require("../middleware.js");
+const {
+  validateReview,
+  isLoggedIn,
+  isReviewAuthor,
+} = require("../middleware.js");
 
 // Review Post Route
 router.post(
@@ -28,6 +32,8 @@ router.post(
 // Delete review route
 router.delete(
   "/:reviewId",
+  isLoggedIn,
+  isReviewAuthor,
   wrapAsnc(async (req, res) => {
     let { id, reviewId } = req.params;
 
