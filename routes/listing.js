@@ -6,12 +6,19 @@ const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 
 const listingController = require("../controllers/listings.js");
 
+const multer = require("multer");
+const upload = multer({ dest: 'uploads/'}); // automatic creates uploads folder 
+
+
 // Show All Listings or Index route
 // Create Route or post request for add a new listing
 router
   .route("/")
   .get(wrapAsnc(listingController.index))
-  .post(isLoggedIn, validateListing, wrapAsnc(listingController.createListing));
+  // .post(isLoggedIn, validateListing, wrapAsnc(listingController.createListing));
+  .post( upload.single('listing[image]'), (req, res) => {
+    res.send(req.file);
+  });
 
 // new route or Add new listing
 router.get("/new", isLoggedIn, listingController.renderNewForm);
