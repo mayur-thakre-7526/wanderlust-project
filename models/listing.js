@@ -9,9 +9,8 @@ const listingSchema = new Schema({
   },
   description: String,
   image: {
-    type: String,
-    default: "https://i.redd.it/yofvyalpn45g1.jpeg",
-    set: (v) => (v === "" ? "https://i.redd.it/yofvyalpn45g1.jpeg" : v),
+    url: String,
+    filename: String,
   },
   price: {
     type: Number,

@@ -13,10 +13,12 @@ const upload = multer({ storage }); // automatic creates uploads folder
 router
   .route("/")
   .get(wrapAsnc(listingController.index))
-  // .post(isLoggedIn, validateListing, wrapAsnc(listingController.createListing));
-  .post(upload.single("listing[image]"), (req, res) => {
-    res.send(req.file);
-  });
+  .post(
+    isLoggedIn,
+    upload.single("listing[image]"),
+    validateListing,
+    wrapAsnc(listingController.createListing),
+  );
 
 // new route or Add new listing
 router.get("/new", isLoggedIn, listingController.renderNewForm);
