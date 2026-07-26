@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "22.23.1"
+  },
   "name": "project-1-(-wanderlust-)",
   "version": "1.0.0",
   "description": "",
