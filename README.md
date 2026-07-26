@@ -1,13 +1,12 @@
 # 🏠 WanderLust
 
+A full-stack Airbnb-inspired property listing web application built using **Node.js, Express.js, MongoDB, EJS, and Bootstrap**.
+
 ## 🌐 Live Demo
 
 🔗 **Live Website:** https://wanderlust-project-myza.onrender.com
 
 ⭐ **Repository:** https://github.com/mayur-thakre-7526/wanderlust-project
-
-
-A full-stack Airbnb-inspired property listing web application built using **Node.js, Express.js, MongoDB, EJS, and Bootstrap**.
 
 ---
 
