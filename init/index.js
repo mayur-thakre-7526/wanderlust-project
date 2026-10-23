@@ -1,30 +1,49 @@
-// Initilization logic
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
+const User = require("../models/user.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
-main()
-    .then(() => {
-        console.log("Connected to DB");
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-
-async function main() {
-    await mongoose.connect(MONGO_URL);
-}
+const MONGO_URL = process.env.ATLASDB_URL;
 
 const initDB = async () => {
-    await Listing.deleteMany({});
-    initData.data = initData.data.map((obj) => ({
-        ...obj,
-        owner: "6a5f60a2a756643d6b5ad9e0",
-    }));
-    
-    await Listing.insertMany(initData.data);
-    console.log("Data was initialized");
+  // Find an existing registered user
+  const user = await User.findOne({});
+
+  if (!user) {
+    throw new Error("No user found. Please sign up first.");
+  }
+
+  // Remove existing listings before re-initializing
+  await Listing.deleteMany({});
+
+  // Assign the registered user as owner
+  const listings = initData.data.map((obj) => ({
+    ...obj,
+    owner: user._id,
+  }));
+
+  await Listing.insertMany(listings);
+
+  console.log("Data was initialized");
 };
 
-initDB();
+async function main() {
+  if (!MONGO_URL) {
+    throw new Error("ATLASDB_URL is missing from .env");
+  }
+
+  await mongoose.connect(MONGO_URL);
+  console.log("Connected to DB");
+
+  await initDB();
+}
+
+main()
+  .catch((err) => {
+    console.error("Initialization failed:", err);
+  })
+  .finally(async () => {
+    await mongoose.connection.close();
+  });
